@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnoSphere - Virtual Workspace</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 2em auto;
+            padding: 2em;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 0.5em 1em;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+            button:hover {
+                background-color: #555;
+            }
+
+        .feature {
+            margin: 2em 0;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+            .feature img {
+                max-width: 100%;
+                border-radius: 5px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease-in-out;
+                cursor: pointer;
+            }
+
+            .feature:hover img {
+                transform: scale(1.1);
+            }
+
+            .feature p {
+                margin-top: 1em;
+            }
+
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #4e54c8 0%, #8f94fb 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            color: #fff;
+            z-index: 1000;
+        }
+
+        /* Dynamic Background Animation */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #4e54c8, #8f94fb);
+            z-index: -1;
+            animation: backgroundAnimation 10s infinite alternate;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background-position: 0% 0%;
+            }
+
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading">Loading...</div>
+
+    <header>
+        <h1>InnoSphere - Virtual Workspace</h1>
+    </header>
+
+    <section>
+        <p>Welcome to InnoSphere, your ultimate virtual workspace for creativity, relaxation, and productivity.</p>
+        <p>Experience a unique blend of features designed to boost your inspiration and focus.</p>
+        <p>Unlock premium business opportunities through our exclusive features.</p>
+
+        <button onclick="startInnoSphere()">Start InnoSphere</button>
+    </section>
+
+    <section class="feature">
+        <h2>Unlock Creativity</h2>
+        <a href="creativity.html">
+            <img src="mindfulness.png" alt="Creativity">
+        </a>
+        <p>Immerse yourself in a world of inspiration with our intuitive and interactive creativity tools. Hover over the image to witness the magic!</p>
+    </section>
+
+    <section class="feature">
+        <h2>Mindfulness Zone</h2>
+        <a href="meditation.html">
+            <img id="mindfulnessImage" src="mindfulness1.png" alt="Mindfulness" onclick="showQuote()">
+        </a>
+        <p>Indulge in our unique approach to mindfulness. Each click on the image reveals a different inspirational quote. Take a moment to reflect.</p>
+    </section>
+
+    <section class="feature">
+        <h2>Relaxation Oasis</h2>
+        <a href="relaxation.html">
+            <img src="relaxation.png" alt="Relaxation">
+        </a>
+        <p>Discover moments of tranquility within InnoSphere to rejuvenate your mind and body. Hover over the image for a calming effect!</p>
+    </section>
+
+    <section class="feature">
+        <h2>Boost Productivity</h2>
+        <a href="productivity.html">
+            <img src="boost.png" alt="Productivity">
+        </a>
+        <p>Enhance your productivity with smart features tailored for business success. Hover over the image to feel the energy!</p>
+    </section>
+
+    <script>window.onload = function () {
+            // Remove the loading screen once the page is fully loaded
+            document.querySelector('.loading').style.display = 'none';
+        }
+
+        function startInnoSphere() {
+            alert('Welcome to InnoSphere! Get ready for a unique virtual workspace experience.');
+            // Add more functionality as needed for a real-world application
+        }
+
+        let quoteIndex = 0;
+        const quotes = [
+            "Inhale the future, exhale the past.",
+            "The only way to do great work is to love what you do.",
+            "Focus on the journey, not the destination.",
+            "Creativity is intelligence having fun.",
+            "Your time is limited, don't waste it living someone else's life."
+        ];
+
+        function showQuote() {
+            document.getElementById('mindfulnessImage').alt = quotes[quoteIndex];
+            alert(quotes[quoteIndex]);
+            quoteIndex = (quoteIndex + 1) % quotes.length;
+        }</script>
+</body>
+</html>

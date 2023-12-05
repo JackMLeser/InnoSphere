@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #D4E9D6, #9BCD9B);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            width: 100%;
+            margin: auto;
+        }
+
+        h1, h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        button {
+            background-color: #AED581;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+            button:hover {
+                background-color: #7CB342;
+            }
+
+        #mindfulness-container,
+        #breathing-animation,
+        #thoughts-container {
+            margin-top: 30px;
+        }
+
+        #mindfulness-output,
+        #breathing-output,
+        #thoughts-input,
+        #thoughts-output {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        #background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+            #background-animation:before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(45deg, #8CB4C4, #CEE5D0, #8CB4C4, #CEE5D0);
+                background-size: 400% 400%;
+                animation: gradientAnimation 10s ease infinite;
+            }
+
+        #floating-leaves {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .leaf {
+            position: absolute;
+            background-color: #AED581;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: floatAnimation 8s ease-in-out infinite;
+        }
+
+        @keyframes floatAnimation {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        #breathing-circle {
+            width: 100px;
+            height: 100px;
+            background-color: #81C784;
+            border-radius: 50%;
+            cursor: pointer;
+            animation: breatheAnimation 4s ease infinite;
+        }
+
+        @keyframes breatheAnimation {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .breathe-in-out {
+            animation: breatheInOut 4s ease infinite;
+        }
+
+        @keyframes breatheInOut {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            25%, 75% {
+                transform: scale(1.2);
+            }
+
+            50% {
+                transform: scale(1);
+            }
+        }
+
+        #thoughts-input,
+        #thoughts-output {
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+    <title>Mindfulness Sanctuary</title>
+</head>
+<body>
+    <div id="background-animation"></div>
+    <div class="container">
+        <h1>Mindfulness Sanctuary</h1>
+        <button onclick="startMindfulness()">Start Mindfulness</button>
+        <div id="mindfulness-container">
+            <h2>Mindfulness Exercise</h2>
+            <p id="mindfulness-output"></p>
+        </div>
+
+        <div id="breathing-animation">
+            <h2>Mindful Breathing</h2>
+            <p id="breathing-output"></p>
+            <div id="breathing-circle"></div>
+        </div>
+
+        <div id="thoughts-container">
+            <h2>Reflective Thoughts</h2>
+            <textarea id="thoughts-input" placeholder="Jot down your thoughts..."></textarea>
+            <p id="thoughts-output"></p>
+        </div>
+    </div>
+    <div id="floating-leaves"></div>
+    <script>function startMindfulness() {
+            const mindfulnessExercises = [
+                "Focus on your breath. Inhale deeply, exhale slowly. Pay attention to each breath.",
+                "Observe your surroundings without judgment. Notice colors, shapes, and textures.",
+                "Practice gratitude. Reflect on three things you're thankful for in this moment.",
+                "Perform a body scan. Slowly bring awareness to each part of your body."
+            ];
+
+            const randomIndex = Math.floor(Math.random() * mindfulnessExercises.length);
+            const mindfulnessOutputElement = document.getElementById('mindfulness-output');
+            mindfulnessOutputElement.textContent = mindfulnessExercises[randomIndex];
+        }
+
+        // Breathing Animation
+        const breathingCircle = document.getElementById('breathing-circle');
+        const breathingOutputElement = document.getElementById('breathing-output');
+
+        breathingCircle.addEventListener('click', () => {
+            breathingCircle.classList.toggle('breathe-in-out');
+            breathingOutputElement.textContent = 'Inhale... Exhale...';
+        });</script>
+</body>
+</html>

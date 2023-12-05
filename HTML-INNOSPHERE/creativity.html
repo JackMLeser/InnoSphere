@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnoSphere - Creative Zone</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF69B4, #9370DB); /* Gradient background for the banner */
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 2em auto;
+            padding: 2em;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+
+        h2, p {
+            color: #333;
+        }
+
+        .creative-content {
+            text-align: center;
+            margin-top: 2em;
+        }
+
+        button {
+            padding: 0.8em 1.5em;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+            button:hover {
+                background-color: #45a049;
+            }
+
+        .creative-challenges, .virtual-workshops {
+            margin-top: 3em;
+            display: flex;
+            justify-content: space-around;
+        }
+
+            .creative-challenges img, .virtual-workshops img {
+                width: 150px;
+                border-radius: 10px;
+                margin-bottom: 1em;
+            }
+
+        .quote-container {
+            margin-top: 3em;
+        }
+
+            .quote-container p {
+                font-style: italic;
+                font-size: 1.2em;
+            }
+
+        /* Unique Background Animation */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #FF69B4, #9370DB);
+            z-index: -1;
+            animation: backgroundAnimation 15s infinite alternate;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background-size: 120% 120%;
+            }
+
+            100% {
+                background-size: 100% 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>InnoSphere - Creative Zone</h1>
+    </header>
+
+    <section>
+        <h2>Unleash Your Creativity</h2>
+
+        <div class="creative-content">
+            <p>Welcome to our vibrant creative zone within InnoSphere.</p>
+            <p>Immerse yourself in a world of inspiration and unleash your creative potential.</p>
+
+            <!-- Add custom functionality as needed -->
+            <button onclick="startCreative()">Get Inspired</button>
+        </div>
+
+        <!-- Creative Challenges Section -->
+        <div class="creative-content creative-challenges">
+            <div>
+                <img src="challenge1.jpg" alt="Creative Challenge 1">
+                <p>Weekly Challenges</p>
+            </div>
+            <div>
+                <img src="challenge2.jpg" alt="Creative Challenge 2">
+                <p>Collaborative Projects</p>
+            </div>
+            <div>
+                <img src="challenge3.jpg" alt="Creative Challenge 3">
+                <p>Themed Competitions</p>
+            </div>
+        </div>
+
+        <!-- Virtual Workshops Section -->
+        <div class="creative-content virtual-workshops">
+            <div>
+                <img src="workshop1.jpg" alt="Virtual Workshop 1">
+                <p>Design Thinking</p>
+            </div>
+            <div>
+                <img src="workshop2.jpg" alt="Virtual Workshop 2">
+                <p>Creative Writing</p>
+            </div>
+            <div>
+                <img src="workshop3.jpg" alt="Virtual Workshop 3">
+                <p>Interactive Art</p>
+            </div>
+        </div>
+
+        <!-- Inspirational Quotes Section -->
+        <div class="quote-container">
+            <h2>Inspirational Quote</h2>
+            <p id="quote">"Creativity is intelligence having fun."</p>
+            <button onclick="showNewQuote()">Get Inspired</button>
+        </div>
+    </section>
+
+    <script>function startCreative() {
+            // Add custom functionality or redirect logic for the creative section
+            alert('Let the creative journey begin!');
+            // You can redirect the user to another page or implement specific features here
+        }
+
+        const quotes = [
+            "Inhale the future, exhale the past.",
+            "The only way to do great work is to love what you do.",
+            "Focus on the journey, not the destination.",
+            "Creativity is intelligence having fun.",
+            "Your time is limited, don't waste it living someone else's life."
+        ];
+
+        function showNewQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            document.getElementById('quote').textContent = quotes[randomIndex];
+        }</script>
+</body>
+</html>

@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(to right, #7EC8E3, #84A2AC);
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1, h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        button {
+            background-color: #5B9BD5;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            cursor: pointer;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+            button:hover {
+                background-color: #2F75B5;
+            }
+
+        #meditation-container {
+            margin-top: 30px;
+        }
+
+        #meditation-output {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #333;
+        }
+
+        #background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+            #background-animation:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url('https://www.transparenttextures.com/patterns/subtle-carbon.png');
+                opacity: 0.3;
+                mix-blend-mode: overlay;
+            }
+
+        #sun-moon {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle at 50% 50%, #FFE4B5, #F0E68C);
+            border-radius: 50%;
+            animation: floatAnimation 10s ease-in-out infinite;
+        }
+
+        #mountains {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to bottom, #8B4513, #CD853F);
+            clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+        }
+
+        #water {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 20%;
+            background: linear-gradient(to bottom, #87CEEB, #1E90FF);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+            animation: waveAnimation 5s linear infinite;
+        }
+
+        @keyframes floatAnimation {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes waveAnimation {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .particle-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: #5B9BD5;
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            animation: particleAnimation 5s infinite;
+        }
+
+        @keyframes particleAnimation {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(50px, 50px);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+    </style>
+    <title>Relaxation Haven</title>
+</head>
+<body>
+    <div id="background-animation">
+        <div id="sun-moon"></div>
+        <div id="mountains"></div>
+        <div id="water"></div>
+    </div>
+    <div class="container">
+        <h1>Relaxation Haven</h1>
+        <button onclick="startMeditation()">Start Meditation</button>
+        <div id="meditation-container">
+            <h2>Meditation Tips</h2>
+            <p id="meditation-output"></p>
+        </div>
+    </div>
+    <div class="particle-container"></div>
+    <script>function startMeditation() {
+            const meditationTips = [
+                "Close your eyes and focus on your breath. Inhale deeply, exhale slowly.",
+                "Feel the sensation of your body against the surface you're sitting or lying on.",
+                "Let go of any tension. Relax your muscles, starting from your toes up to your head.",
+                "Imagine a peaceful place, like a serene beach or a tranquil forest. Visualize yourself there."
+            ];
+
+            const randomIndex = Math.floor(Math.random() * meditationTips.length);
+            const meditationOutputElement = document.getElementById('meditation-output');
+            meditationOutputElement.textContent = meditationTips[randomIndex];
+        }
+
+        // Particle Animation
+        const particleContainer = document.querySelector('.particle-container');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.top = Math.random() * 100 + 'vh';
+            particle.style.left = Math.random() * 100 + 'vw';
+            particleContainer.appendChild(particle);
+        }</script>
+</body>
+</html>
